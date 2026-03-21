@@ -1,0 +1,11 @@
+kind: Kustomization
+labels:
+- includeSelectors: true
+  pairs:
+    app: exoplanets
+resources:
+- deployment.yaml
+- service.yaml
+- route.yaml
+- configmap.yaml
+- secret.yaml
