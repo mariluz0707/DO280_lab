@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: workshop
+spec:
+  hard:
+    limits.cpu: "2"
+    limits.memory: 1Gi
+    requests.cpu: 1500m
+    requests.memory: 750Mi

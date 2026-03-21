@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: workshop
+spec:
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          workshop: ${PROJECT_NAME}
+    - namespaceSelector:
+        matchLabels:
+          policy-group.network.openshift.io/ingress: ""
+  podSelector: {}
+  policyTypes:
+  - Ingress

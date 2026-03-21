@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: workshop
+spec:
+  limits:
+  - default:
+      cpu: 500m
+      memory: 500Mi
+    defaultRequest:
+      cpu: 100m
+      memory: 250Mi
+    max:
+      cpu: 750m
+      memory: 750Mi
+    type: Container
