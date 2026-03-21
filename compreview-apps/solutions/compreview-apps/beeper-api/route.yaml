@@ -1,0 +1,17 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  name: beeper-api-route
+  namespace: workshop-support
+spec:
+  host: beeper-api.apps.ocp4.example.com
+  port:
+    targetPort: https
+  to:
+    kind: Service
+    name: beeper-api
+    weight: null
+  tls:
+    termination: passthrough

@@ -1,0 +1,21 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: database-policy
+  namespace: workshop-support
+spec:
+  podSelector:
+    matchLabels:
+      app: CHANGE_ME
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              category: support
+          podSelector:
+            matchLabels:
+              app: CHANGE_ME
+      ports:
+        - protocol: TCP
+          port: CHANGE_ME
