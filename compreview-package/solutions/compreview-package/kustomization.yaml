@@ -1,0 +1,35 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - pdb.yaml
+
+labels:
+  - pairs:
+      app.kubernetes.io/environment: production
+
+commonAnnotations:
+  managed-by: kustomize-gitops
+
+patches:
+  - target:
+      kind: Deployment
+      name: etherpad-prod
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 6
+
+  - target:
+      kind: Deployment
+      name: etherpad-prod
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/resources
+        value:
+          requests:
+            cpu: 200m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
